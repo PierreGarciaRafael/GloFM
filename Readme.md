@@ -8,12 +8,12 @@ We present GloFM: a Glorys Flow-Matching emulator for spatio-temporal ocean data
 
 Given a FM model trained for unconditional sampling on GLORYS, we want to estimate $p\left( x_1^{1:T}\mid y^{-\tau:0} \right)$. To do so, we compare 2 algorithms:
 
-1) Full sequence multi-flow matching, where we directly sample $p(x_1^{-\tau:T_F}\mid y^{-\tau: 0})$, using the ODE defined in Equation \eqref{eq:post_ode}, combining the prediction of several inferences using sliding windows, and assimilating the observations of the start of the timeseries. This approach is described for DDPM models in \citet{rozet_score-based_2023}.
+1) Full sequence multi-flow matching, where we directly sample $p(x_1^{-\tau:T_F}\mid y^{-\tau: 0})$, using the ODE defined in Equation \eqref{eq:post_ode}, combining the prediction of several inferences using sliding windows, and assimilating the observations of the start of the timeseries. This approach is described for DDPM models in  [[1]](#1).
 2) Auto regressive Markovian generation, where we start by generating $p\left(x_1^{-\tau:0}\mid y^{-\tau: 0}\right)$, then sequentially generate $p\left(x_1^{n}|x_1^{n-7:n-1}\right)$, starting with $n=1$, stopping at $n=T_F$, incrementing $n$ by $1$. See Appendix~\ref{apx:ar_fcast} for details.
 
 To sample the distribution $p\left( x_1^{-\tau:T_F}\mid y^{-\tau:0} \right)$, with $x_1^i$ the sampled states, $y^{-\tau:0}$ the observation and $v_\theta(x_s,s)$,  we first sample $p\left(x_1^{-\tau:0}\mid y^{-\tau:0} \right)$, using MMPS~\ref{eq:post_ode}. With $\tau=6$.
 
-Then in order to sample $p\left(x_1^{1}\mid x_1^{-6:0}\right)$, we use \cite{rozet_score-based_2023} simpler posterior sampling algorithm as MMPS algorithm complexity scales with $k^2$. In this algorithm, $A\mathbb{V}[x \mid  x_s] A^\top$ is approximated with a diagonal matrix $(1-s)\Gamma$, with $\Gamma$ set to $2I$. Using this simpler algorithm reduces the complexity of the posterior sampling but makes it less stable when assimilated observations are far away from the prior distribution.
+Then in order to sample $p\left(x_1^{1}\mid x_1^{-6:0}\right)$, we use  [[1]](#1) simpler posterior sampling algorithm as MMPS algorithm complexity scales with $k^2$. In this algorithm, $A\mathbb{V}[x \mid  x_s] A^\top$ is approximated with a diagonal matrix $(1-s)\Gamma$, with $\Gamma$ set to $2I$. Using this simpler algorithm reduces the complexity of the posterior sampling but makes it less stable when assimilated observations are far away from the prior distribution.
 We then sample all remaining timesteps using the same methodology, sequentially sampling $\left(p\left(x^n_1\mid x_1^{n-7:n-1}\right)\right)_{n\in \left\{ 2\ldots T_F\right\}}$.
 
 These algoritmhs are computationnally expansive, the few forecasting results we produced using these methods are presented in the next figures:
@@ -21,14 +21,14 @@ These algoritmhs are computationnally expansive, the few forecasting results we 
  <img
  src=figures/forecast/maps/fs.gif
  alt="fs">
- <figcaption>Forecasting using full sequence sampling</figcaption>
+ <figcaption>Here we show the qualitative results of full sequence sampling for forecasting, using the sliding-window posterior sampling, starting with an ensemble of RS observation assimilation (first 6 days). Note that while the Gulf-stream filament is visible even after the 13th day of the timeseries, strong gradients in the SST still disappear after the 16th day.</figcaption>
 </figure>
 
 <figure>
  <img
  src=figures/forecast/maps/ar.gif
  alt="ar">
- <figcaption>Forecasting using autoregression sampling</figcaption>
+ <figcaption>Here we show the qualitative results of ensemble forecasting, using the auto-regressive posterior sampling, starting with an ensemble of RS observation assimilation (first 3 days, not displayed). Note that how the Gulf-stream filament disappears after the 4th day of forecasting.</figcaption>
 </figure>
 
 ## Forecast evaluation
@@ -47,5 +47,15 @@ These algoritmhs are computationnally expansive, the few forecasting results we 
 
 
 
-We report the results of the ensemble forecasting, comparing the two approaches in Figure~\ref{fig:forecast_metrics}. SST prediction metrics are better for far horizons (after 8 days of predictions for the CRPS) for the full sequence sampling approach. The auto-regressive method provides substantially better metrics than the full sequence sampling approach. 
+We report the results of the ensemble forecasting, comparing the two approaches in above Figures. SST prediction metrics are better for far horizons (after 8 days of predictions for the CRPS) for the full sequence sampling approach. For other variables, the auto-regressive method provides substantially better results than the full sequence sampling approach. 
 
+
+
+# Bibliography
+
+<a id="1">[1]</a>: François Rozet and Gilles Louppe. Score-based Data As-
+similation. Advances in Neural Information Process-
+ing Systems, 36:40521–40541, December 2023. URL
+https://proceedings.neurips.cc/paper files/paper/202
+3/hash/7f7fa581cc8a1970a4332920cdf87395-Abstrac
+t-Conference.html.
