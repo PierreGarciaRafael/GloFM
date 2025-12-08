@@ -93,11 +93,6 @@ UNet architecture has proven to be state-of-the-art for various image processing
 
 # Bibliography
 
-<a id="1">[1]</a>: François Rozet and Gilles Louppe. Score-based Data As-
-similation. Advances in Neural Information Process-
-ing Systems, 36:40521–40541, December 2023. URL
-https://proceedings.neurips.cc/paper files/paper/202
-3/hash/7f7fa581cc8a1970a4332920cdf87395-Abstrac
-t-Conference.html.
+<a id="1">[1]</a>: François Rozet and Gilles Louppe. Score-based Data Assimilation. Advances in Neural Information Processing Systems, 36:40521–40541, December 2023. URL https://proceedings.neurips.cc/paper_files/paper/2023/hash/7f7fa581cc8a1970a4332920cdf87395-Abstract-Conference.html.
 
 
