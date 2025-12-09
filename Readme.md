@@ -6,7 +6,7 @@ We present GloFM: a Glorys Flow-Matching emulator for spatio-temporal ocean data
 
 ## Drifter evaluation
 
-<figure class="figure-grid" style="display:flex; gap:1%; justify-content:space-between;">
+<figure class="figure-grid" style="gap:1%; justify-content:space-between;">
   <figure style="width:100%; margin:0;">
     <h2 id="fig:duacs">
     <img src="figures/drifter_eval/CRPS.png" alt="Daily CRPS of the ensemble of reconstruction computed against drifter eastward & northward components." style="width:100%;">
