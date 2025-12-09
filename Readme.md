@@ -4,7 +4,28 @@ Providing regular and physically consistent predictions of the ocean state is cr
 
 We present GloFM: a Glorys Flow-Matching emulator for spatio-temporal ocean data assimilation. Our generative model produces coherent estimates of ocean surface fields. GloFM uses flow matching to assimilate observational data for nowcasting of surface currents, sea surface height (SSH), and sea surface temperature (SST). Compared to deterministic regression-based approaches, GloFM demonstrates improved realism metrics, capturing finer-scale variability and more physically plausible ocean states.
 
-## SSH power spectral densities and score
+## Drifter evaluation
+
+<figure class="figure-grid" style="display:flex; gap:1%; justify-content:space-between;">
+  <figure style="width:100%; margin:0;">
+    <h2 id="fig:duacs">
+    <img src="figures/drifter_eval/CRPS.png" alt="Daily CRPS of the ensemble of reconstruction computed against drifter eastward & northward components." style="width:100%;">
+    </h2>
+    <figcaption>Daily CRPS of the ensemble of reconstruction.</figcaption>
+  </figure>
+
+  <figure style="width:100%; margin:0;">
+    <h2 id="fig:duacs">
+    <img src="figures/drifter_eval/Partial_Rank_Histogram.png" alt="Daily CRPS of the ensemble of reconstruction computed against drifter eastward & northward components." style="width:100%;">
+    </h2>
+    <figcaption>Daily rank histograms of the ensemble of reconstruction.</figcaption>
+  </figure>
+  <figcaption style="width:100%; text-align:left; margin-top:0.5rem;">
+    Evaluated assimilation ensembles were generated using our FM model, without drifter assimilation, metrics were computed against ground truth drifter u and v components.
+    </figcaption>
+</figure>
+
+## SSH power spectral densities and effective resolution
 
 <figure class="figure-grid" style="display:flex; flex-wrap:wrap; gap:1%; justify-content:space-between;">
   <figure style="width:49%; margin:0;">
