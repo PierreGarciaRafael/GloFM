@@ -6,35 +6,12 @@ We present GloFM: a Glorys Flow-Matching emulator for spatio-temporal ocean data
 
 ## Realism evaluation
 
+| Power Spectral Density                       | Probability density function |
+|----------------------------|------|
+|![PSD](figures/realism/spatial_spectrum.png) | ![pdf](figures/realism/pdf.png) |
 
-<figure class="figure-grid" style="display:flex; flex-wrap:wrap; gap:1%; justify-content:space-between;">
-  <figure style="width:49%; margin:0;">
-    <h2 id="spatial_spectrum">
-    <img src="figures/realism/spatial_spectrum.png">
-    </h2>
-  </figure>
-  <figure style="width:49%; margin:0;">
-    <h2 id="pdf">
-    <img src="figures/realism/pdf.png">
-    </h2>
-  </figure>
-  <figcaption style="width:100%; text-align:left; margin-top:0.5rem;">
-  Power spectral density (PSD) (left) and Probability Density Function (PDF) (right) of the generated ensemble members compared to GLORYS. The PSD is the summation of the 2D Fourier spectrum amplitudes in a frequency ring. We observe an expected bias in the SSH distribution (left, second line), due to a difference in the Mean dynamic topology convention with GLORYS.    </figcaption>
-</figure>
+Power spectral density (PSD) (left) and Probability Density Function (PDF) (right) of the generated ensemble members compared to GLORYS. The PSD is the summation of the 2D Fourier spectrum amplitudes in a frequency ring. We observe an expected bias in the SSH distribution (left, second line), due to a difference in the Mean dynamic topology convention with GLORYS.
 
-
-%\begin{figure}[htbp]
-%    \centering
-%    \begin{subfigure}{0.22\textwidth}\label{subfig:spatial_spectrum}
-%        \includegraphics[width=\textwidth]{images/results/ODC/realism/spatial_spectrum.pdf}
-%    \end{subfigure}
-%    \hfill
-%    \begin{subfigure}{0.22\textwidth}\label{subfig:pdf}
-%        \includegraphics[width=\textwidth]{images/results/ODC/realism/pdf.pdf}
-%    \end{subfigure}
-%    \caption{ }
-%    \label{fig:pdf_and_psd}
-%\end{figure}
 
 ## Drifter evaluation
 
