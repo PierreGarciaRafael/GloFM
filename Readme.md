@@ -4,6 +4,38 @@ Providing regular and physically consistent predictions of the ocean state is cr
 
 We present GloFM: a Glorys Flow-Matching emulator for spatio-temporal ocean data assimilation. Our generative model produces coherent estimates of ocean surface fields. GloFM uses flow matching to assimilate observational data for nowcasting of surface currents, sea surface height (SSH), and sea surface temperature (SST). Compared to deterministic regression-based approaches, GloFM demonstrates improved realism metrics, capturing finer-scale variability and more physically plausible ocean states.
 
+## Realism evaluation
+
+
+<figure class="figure-grid" style="display:flex; flex-wrap:wrap; gap:1%; justify-content:space-between;">
+  <figure style="width:49%; margin:0;">
+    <h2 id="spatial_spectrum">
+    <img src="figures/realism/spatial_spectrum.png">
+    </h2>
+  </figure>
+  <figure style="width:49%; margin:0;">
+    <h2 id="pdf">
+    <img src="figures/realism/pdf.png">
+    </h2>
+  </figure>
+  <figcaption style="width:100%; text-align:left; margin-top:0.5rem;">
+  Power spectral density (PSD) (left) and Probability Density Function (PDF) (right) of the generated ensemble members compared to GLORYS. The PSD is the summation of the 2D Fourier spectrum amplitudes in a frequency ring. We observe an expected bias in the SSH distribution (left, second line), due to a difference in the Mean dynamic topology convention with GLORYS.    </figcaption>
+</figure>
+
+
+%\begin{figure}[htbp]
+%    \centering
+%    \begin{subfigure}{0.22\textwidth}\label{subfig:spatial_spectrum}
+%        \includegraphics[width=\textwidth]{images/results/ODC/realism/spatial_spectrum.pdf}
+%    \end{subfigure}
+%    \hfill
+%    \begin{subfigure}{0.22\textwidth}\label{subfig:pdf}
+%        \includegraphics[width=\textwidth]{images/results/ODC/realism/pdf.pdf}
+%    \end{subfigure}
+%    \caption{ }
+%    \label{fig:pdf_and_psd}
+%\end{figure}
+
 ## Drifter evaluation
 
 <figure class="figure-grid" style="gap:1%; justify-content:space-between;">
@@ -61,7 +93,7 @@ In above figure, we compare the along-track spectral characteristics of various 
 
 
 ## Using GloFM for forecast
-### Forecast proposed methodology
+### Forecast proposed methodologies
 Given a FM model trained for unconditional sampling on GLORYS, we want to estimate $p( x_1^{1:T}\mid y^{-\tau:0} )$. To do so, we compare 2 algorithms:
 
 1) Full sequence multi-flow matching, where we directly sample $p(x_1^{-\tau:T_F}\mid y^{-\tau: 0})$, using the ODE defined in Equation \eqref{eq:post_ode}, combining the prediction of several inferences using sliding windows, and assimilating the observations of the start of the timeseries. This approach is described for DDPM models in  [[1]](#1).
