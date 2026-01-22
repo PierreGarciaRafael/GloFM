@@ -53,7 +53,7 @@ Power spectral density (PSD) (left) and Probability Density Function (PDF) (righ
     <h2 id="fig:convlstm">
     <img src="figures/psd/OSE_ssh_mapping_convlstm_ssh-sst_psds.png" alt="PSD and score of along-track SSH for ConvLSTM-sst-ssh SSH fields." style="width:100%;">
     </h2>
-    <figcaption>PSD and score of along-track SSH for ConvLSTM-sst- ssh SSH fields.</figcaption>
+    <figcaption>PSD and score of along-track SSH for ConvLSTM-sst-ssh SSH fields.</figcaption>
   </figure>
   <figure style="width:49%; margin:0;">
     <h2 id="fig:drifters">
@@ -62,7 +62,7 @@ Power spectral density (PSD) (left) and Probability Density Function (PDF) (righ
     <figcaption>PSD and score of along-track SSH for the mean of the ensemble of assimilation with drifter assimilation.</figcaption>
   </figure>
   <figcaption style="width:100%; text-align:left; margin-top:0.5rem;">
-    Given Cryosat-2 observations, we sample SSH fields from each product at the measurement location. We then compute the PSD on this sequence of points, for each method and for the Croysat-2 satellite. The score reveals the wavelength at which the reconstructed fields are predicting Cryosat.
+    Given Cryosat-2 observations, we sample SSH fields from each product at the measurement location. We then compute the PSD on this sequence of points, for each method and for the Croysat-2 satellite along with the PSD of the difference between each model's prediction and CryoSat-2's observation. The score reveals the wavelength at which the reconstructed fields are predicting Cryosat.
   </figcaption>
 </figure>
 
